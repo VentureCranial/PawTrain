@@ -1,4 +1,4 @@
-image: python2.7
+image: bradrydzewski/python:2.7   
 notify:
   email:
     recipients:
