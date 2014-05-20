@@ -21,7 +21,7 @@ echo Installing any necessary libraries...
 # command line option; this forces XCode to ignore it (at least for now).
 #
 OS=`uname -s`
-if [ "x$OS" == "xDarwin" ]; then
+if [ "x$OS" = "xDarwin" ]; then
     echo Working around MacOS compiler weirdness...
     export ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future
 fi
