@@ -1,0 +1,8 @@
+notify:
+  email:
+    recipients:
+      - baron@baronchandler.com
+
+services:
+  - postgres
+
