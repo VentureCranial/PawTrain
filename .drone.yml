@@ -3,6 +3,10 @@ notify:
     recipients:
       - baron@baronchandler.com
 
+script:
+  - make
+  - make test
+
 services:
   - postgres
 
