@@ -1,4 +1,7 @@
 image: bradrydzewski/python:2.7   
+services:
+  - postgres
+
 notify:
   email:
     recipients:
@@ -7,7 +10,4 @@ notify:
 script:
   - make
   - make test
-
-services:
-  - postgres
 
