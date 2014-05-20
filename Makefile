@@ -8,8 +8,8 @@ default: createdb
 	. var/bin/activate && app/manage.py migrate
 
 createdb:
-	createuser -d -l -s pawtrain || echo user already exists
-	createdb -O pawtrain pawtrain || echo db already exists
+	createuser -d -l -s pawtrain -h 127.0.0.1 || echo user already exists
+	createdb -O pawtrain -h 127.0.0.1 pawtrain || echo db already exists
 
 .PHONY: test
 test:
