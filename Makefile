@@ -7,6 +7,11 @@ default: createdb
 	. var/bin/activate && app/manage.py syncdb --noinput
 	. var/bin/activate && app/manage.py migrate
 
+deploy:
+	docker stop pawtrain-dev
+	docker rm pawtrain-dev
+	docker run -d -p 8008:8008 --name='pawtrain-dev' -u 1001 -v /home/pawtrain/deploy:/home/pawtrain/deploy venturecranial/pawtrain-deploy make -C /home/pawtrain/deploy develop
+
 createdb:
 	createuser -d -l -s pawtrain -h 127.0.0.1 -U postgres || echo user already exists
 	createdb -O pawtrain -h 127.0.0.1 -U postgres pawtrain || echo db already exists
@@ -20,7 +25,7 @@ shell:
 	. var/bin/activate && app/manage.py shell_plus
 
 .PHONY: develop
-develop:
+develop: default
 	. var/bin/activate && app/manage.py runserver 127.0.0.1:8008
 
 .PHONY: prod
