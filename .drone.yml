@@ -1,9 +1,26 @@
-image: python2.7
+image: bradrydzewski/python:2.7
+cache:
+  - /var/tmp/pip-cache/
+
+script:
+  - mkdir -p /var/tmp/pip-cache/
+  - sudo chown -R ubuntu:ubuntu /var/tmp/pip-cache/
+
+services:
+  - postgres
+
 notify:
   email:
     recipients:
       - baron@baronchandler.com
 
-services:
-  - postgres
+script:
+  - make
+  - make test
 
+deploy:
+  ssh:
+    target: pawtrain@docker-01:/home/pawtrain/pawtrain.tar.gz
+    artifacts:
+      - GITARCHIVE
+    cmd: sh -c "cd /home/pawtrain && tar zxf pawtrain.tar.gz && make -C PawTrain deploy-fast"
