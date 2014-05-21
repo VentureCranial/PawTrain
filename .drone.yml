@@ -1,6 +1,6 @@
 image: bradrydzewski/python:2.7
 cache:
-  - ../.pip
+  - /tmp/.pip
 
 services:
   - postgres
