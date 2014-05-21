@@ -1,6 +1,7 @@
 Django
 django-extensions
 django-bootstrap3
+django-admin-bootstrapped
 django-registration
 
 psycopg2
