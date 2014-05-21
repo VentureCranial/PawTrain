@@ -1,4 +1,7 @@
 image: bradrydzewski/python:2.7
+cache:
+  - /var/cache/drone/pip-cache
+
 services:
   - postgres
 
