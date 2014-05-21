@@ -4,10 +4,6 @@
 - fields: {domain: dev.pawtrain.com, name: Pawtrain Site}
   model: sites.site
   pk: 2
-- fields: {created: ! '2014-05-21 04:22:27.418735+00:00', email_address: 1, key: c6b1a4a4139110de250820dba5138d1cb84635f579be326d54ad31837c41ee5b,
-    sent: null}
-  model: account.emailconfirmation
-  pk: 1
 - fields:
     date_joined: 2014-05-21 03:42:53.321759+00:00
     email: baron@baronchandler.com
