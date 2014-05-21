@@ -2,11 +2,20 @@ image: bradrydzewski/python:2.7
 cache:
   - /var/tmp/pip-cache/
 
+env:
+  - FACEBOOK_ID={{FACEBOOK_ID}}
+  - FACEBOOK_SECRET={{FACEBOOK_SECRET}}
+  - LINKEDIN_ID={{LINKEDIN_ID}}
+  - LINKEDIN_SECRET={{LINKEDIN_SECRET}}
+  - TWITTER_ID={{TWITTER_ID}}
+  - TWITTER_SECRET={{TWITTER_SECRET}}
+
 script:
   - mkdir -p /var/tmp/pip-cache/
   - sudo chown -R ubuntu:ubuntu /var/tmp/pip-cache/
   - chmod +x mk_oauth_fixtures.sh
-  - FACEBOOK_ID={{FACEBOOK_ID}} FACEBOOK_SECRET={{FACEBOOK_SECRET}} ./mk_oauth_fixtures.sh
+  - ./mk_oauth_fixtures.sh
+
 services:
   - postgres
 
