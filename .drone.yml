@@ -1,6 +1,6 @@
 image: bradrydzewski/python:2.7
 cache:
-  - /var/cache/drone/pip-cache
+  - /var/tmp/pip-cache
 
 services:
   - postgres
