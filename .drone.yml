@@ -1,4 +1,6 @@
 image: bradrydzewski/python:2.7
+cache:
+  - /var/cache/drone/.pip-cache/
 
 services:
   - postgres
@@ -15,5 +17,5 @@ script:
 deploy:
   ssh:
     target: pawtrain@docker-01:deploy
-    artifacrs: GITARCHIVE
+    artifacts: GITARCHIVE
     cmd: make -C deploy deploy
