@@ -6,6 +6,7 @@ default: createdb
 	. var/bin/activate && app/manage.py collectstatic --noinput
 	. var/bin/activate && app/manage.py syncdb --noinput
 	. var/bin/activate && app/manage.py migrate
+	. var/bin/activate && app/manage.py loaddata oauth_fixtures.yaml
 
 deploy: clean
 	make deploy-fast
