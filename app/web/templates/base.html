@@ -1,0 +1,22 @@
+{% load bootstrap3 %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+{% include "site-header.html" %}
+<body>
+    {% bootstrap_messages %}
+
+
+    {% block content %}
+
+    {% endblock %}
+
+    {% include "site-footer.html" %}
+
+    {% block script %}
+    {% endblock %}
+
+</body>
+</html>

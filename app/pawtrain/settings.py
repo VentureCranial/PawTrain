@@ -37,10 +37,21 @@ INSTALLED_APPS = (
     'django_admin_bootstrapped', # must be before admin
     'bootstrap3',
 
+    'django.contrib.sites',
+
     'django.contrib.admin',
     'django.contrib.auth',
 
     'passlib.ext.django',
+    'oauth2_provider',
+    'corsheaders',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.twitter',
+    'allauth.socialaccount.providers.linkedin_oauth2',
+    'allauth.socialaccount.providers.github',
 
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -54,6 +65,7 @@ INSTALLED_APPS = (
     'rest_framework',
     'rest_framework_swagger',
 
+    'web',
 
 )
 
@@ -69,7 +81,10 @@ MIDDLEWARE_CLASSES = (
 from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as _template_context_processors
 TEMPLATE_CONTEXT_PROCESSORS = _template_context_processors + (
     'django.core.context_processors.request',
+    "allauth.account.context_processors.account",
+    "allauth.socialaccount.context_processors.socialaccount",
     )
+
 
 ROOT_URLCONF = 'pawtrain.urls'
 
@@ -133,6 +148,14 @@ superuser__sha512_crypt__default_rounds = 120000
 
 REGISTRATION_OPEN = True
 ACCOUNT_ACTIVATION_DAYS = 7
+
+# CORS Origin
+CORS_ORIGIN_ALLOW_ALL = True
+
+AUTHENTICATION_BACKENDS = (
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
@@ -218,3 +241,6 @@ LOGGING = {
 }
 
 USE_X_FORWARDED_HOST = True
+
+SITE_ID = 1
+
