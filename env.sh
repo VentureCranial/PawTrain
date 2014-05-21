@@ -26,7 +26,7 @@ if [ "x$OS" = "xDarwin" ]; then
     export ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future
 fi
 
-export PIP_DOWNLOAD_CACHE=.pip
+export PIP_DOWNLOAD_CACHE=../.pip
 mkdir -p $PIP_DOWNLOAD_CACHE && chmod a+t $PIP_DOWNLOAD_CACHE
 pip install -r requirements.txt
 
