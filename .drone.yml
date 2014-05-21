@@ -20,6 +20,6 @@ script:
 
 deploy:
   ssh:
-    target: pawtrain@docker-01:pawtrain.tar.gz
+    target: pawtrain@docker-01:/home/pawtrain/pawtrain.tar.gz
     artifacts: GITARCHIVE
-    cmd: tar zxf pawtrain.tar.gz && make -C PawTrain deploy
+    cmd: cd /home/pawtrain && tar zxf pawtrain.tar.gz && make -C PawTrain deploy
