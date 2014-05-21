@@ -35,7 +35,7 @@ INSTALLED_APPS = (
     'gunicorn',
 
     'django_admin_bootstrapped', # must be before admin
-    'bootstrapform',
+    'bootstrap3',
 
     'django.contrib.admin',
     'django.contrib.auth',

@@ -1,7 +1,6 @@
 Django
 django-extensions
-django-bootstrap-form
-django-admin-bootstrapped
+django-bootstrap3
 django-registration
 
 psycopg2
