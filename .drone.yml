@@ -13,4 +13,5 @@ script:
 
 deploy:
   ssh:
+    target: pawtrain@docker-01:deploy
     cmd: git clone https://github.com/VentureCranial/PawTrain.git deploy && make -C deploy deploy
