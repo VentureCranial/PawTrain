@@ -7,7 +7,10 @@ default: createdb
 	. var/bin/activate && app/manage.py syncdb --noinput
 	. var/bin/activate && app/manage.py migrate
 
-deploy:
+deploy: clean
+	make deploy-fast
+
+deploy-fast:
 	docker stop pawtrain-dev
 	docker rm pawtrain-dev
 	docker run -t -i -p 0.0.0.0:8008:8008 --name='pawtrain-dev' -v /home/pawtrain/PawTrain:/home/pawtrain/PawTrain -v /var/tmp/pip-cache/:/var/tmp/pip-cache/ venturecranial/pawtrain-deploy make -C /home/pawtrain/PawTrain deploy-stage2

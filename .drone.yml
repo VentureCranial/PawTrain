@@ -23,4 +23,4 @@ deploy:
     target: pawtrain@docker-01:/home/pawtrain/pawtrain.tar.gz
     artifacts:
       - GITARCHIVE
-    cmd: sh -c "cd /home/pawtrain && tar zxf pawtrain.tar.gz && make -C PawTrain deploy"
+    cmd: sh -c "cd /home/pawtrain && tar zxf pawtrain.tar.gz && make -C PawTrain deploy-fast"
