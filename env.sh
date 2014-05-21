@@ -27,7 +27,9 @@ if [ "x$OS" = "xDarwin" ]; then
 fi
 
 
-pip install -r requirements.txt 
+export PIP_DOWNLOAD_CACHE=/var/tmp/pip-cache
+mkdir -p $PIP_DOWNLOAD_CACHE && chmod a+t $PIP_DOWNLOAD_CACHE
+pip install -r requirements.txt
 
 echo done!
 

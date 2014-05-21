@@ -10,7 +10,11 @@ default: createdb
 deploy:
 	docker stop pawtrain-dev
 	docker rm pawtrain-dev
-	docker run -d -p 8008:8008 --name='pawtrain-dev' -u 1001 -v /home/pawtrain/deploy:/home/pawtrain/deploy venturecranial/pawtrain-deploy make -C /home/pawtrain/deploy develop
+	docker run -t -i -p 0.0.0.0:8008:8008 --name='pawtrain-dev' -v /home/pawtrain/deploy:/home/pawtrain/deploy -v /var/tmp/pip-cache:/var/tmp/pip-cache venturecranial/pawtrain-deploy make -C /home/pawtrain/deploy deploy-stage2
+
+deploy-stage2:
+	/etc/init.d/postgresql start
+	su pawtrain -c 'make develop'
 
 createdb:
 	createuser -d -l -s pawtrain -h 127.0.0.1 -U postgres || echo user already exists
@@ -26,7 +30,7 @@ shell:
 
 .PHONY: develop
 develop: default
-	. var/bin/activate && app/manage.py runserver 127.0.0.1:8008
+	. var/bin/activate && app/manage.py runserver 0.0.0.0:8008
 
 .PHONY: prod
 prod:
