@@ -10,8 +10,7 @@ default: createdb
 deploy:
 	docker stop pawtrain-dev
 	docker rm pawtrain-dev
-	mkdir -p /var/cache/drone/.pip-cache
-	docker run -t -i -p 0.0.0.0:8008:8008 --name='pawtrain-dev' -v /home/pawtrain/deploy:/home/pawtrain/deploy -v /var/cache/drone/.pip-cache:/var/cache/drone/.pip-cache venturecranial/pawtrain-deploy make -C /home/pawtrain/deploy deploy-stage2
+	docker run -t -i -p 0.0.0.0:8008:8008 --name='pawtrain-dev' -v /home/pawtrain/deploy:/home/pawtrain/deploy -v /var/tmp/pip-cache/:/var/tmp/pip-cache/ venturecranial/pawtrain-deploy make -C /home/pawtrain/deploy deploy-stage2
 
 deploy-stage2:
 	/etc/init.d/postgresql start

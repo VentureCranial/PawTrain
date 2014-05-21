@@ -1,6 +1,10 @@
 image: bradrydzewski/python:2.7
 cache:
-  - /var/cache/drone/.pip-cache/
+  - /var/tmp/pip-cache/
+
+script:
+  - mkdir -p /var/tmp/pip-cache/
+  - sudo chown -R ubuntu:ubuntu /var/tmp/pip-cache/
 
 services:
   - postgres
