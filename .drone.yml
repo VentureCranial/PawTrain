@@ -22,4 +22,4 @@ deploy:
   ssh:
     target: pawtrain@docker-01:deploy
     artifacts: GITARCHIVE
-    cmd: make -C deploy deploy
+    cmd: tar zxf PawTrain-\*.tar.gz && make -C PawTrain deploy
