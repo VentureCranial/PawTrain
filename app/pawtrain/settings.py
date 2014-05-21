@@ -51,7 +51,6 @@ INSTALLED_APPS = (
     'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.twitter',
     'allauth.socialaccount.providers.linkedin_oauth2',
-    'allauth.socialaccount.providers.github',
 
     'django.contrib.contenttypes',
     'django.contrib.sessions',

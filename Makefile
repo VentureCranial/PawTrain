@@ -12,8 +12,9 @@ deploy: clean
 	make deploy-fast
 
 deploy-fast:
-	docker stop pawtrain-dev
-	docker rm pawtrain-dev
+	docker stop pawtrain-dev || true
+	docker rm pawtrain-dev || true
+	cp /home/pawtrain/oauth_fixtures.yaml /home/pawtrain/PawTrain/app/web/fixtures/
 	docker run -t -i -p 0.0.0.0:8008:8008 --name='pawtrain-dev' -v /home/pawtrain/PawTrain:/home/pawtrain/PawTrain -v /var/tmp/pip-cache/:/var/tmp/pip-cache/ venturecranial/pawtrain-deploy make -C /home/pawtrain/PawTrain deploy-stage2
 
 deploy-stage2:
