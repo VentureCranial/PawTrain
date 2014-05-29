@@ -1,4 +1,106 @@
 
 body {
-    background: #fec;
+    background: #fff;
+    font-family: 'clearsans', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+}
+
+
+
+.socicon {
+    font-family: 'socicon';
+    font-size: 24px;
+}
+
+.btn-facebook {
+    color: hsl(221, 52%, 54%) !important;
+    background-color: #fff !important;
+    border: 1px solid #555;
+}
+
+.btn-facebook:hover {
+    background-color: hsl(221, 52%, 54%) !important;
+    color: #fff !important;
+    border: 1px solid hsl(221, 52%, 88%) !important;
+}
+
+#nearby-pet-list {
+    list-style-type: none;
+}
+
+.pet-thumbnail {
+    width: 210px;
+    display: block;
+}
+
+.pet-image-box {
+  position: relative;
+}
+
+.pet-image {
+  border: 1px solid #666;
+  width: 210px;
+  height: 157px;
+}
+
+.pet-name {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  text-align: right;
+  padding-right: 0.25em;
+  -webkit-margin-after: 0;
+  font-size: 2.0em;
+  font-weight: bold;
+  color: #fff;
+}
+
+.pet-detail-link {
+    color: #000;
+    text-decoration: none;
+}
+
+@font-face {
+    font-family: 'clearsans_thin';
+    src: url('clearsans/ClearSans-Thin-webfont.eot');
+    src: url('clearsans/ClearSans-Thin-webfont.eot?#iefix') format('embedded-opentype'),
+         url('clearsans/ClearSans-Thin-webfont.woff') format('woff'),
+         url('clearsans/ClearSans-Thin-webfont.ttf') format('truetype'),
+         url('clearsans/ClearSans-Thin-webfont.svg#clearsans_thin') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'clearsans';
+    src: url('clearsans/ClearSans-Regular-webfont.eot');
+    src: url('clearsans/ClearSans-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('clearsans/ClearSans-Regular-webfont.woff') format('woff'),
+         url('clearsans/ClearSans-Regular-webfont.ttf') format('truetype'),
+         url('clearsans/ClearSans-Regular-webfont.svg#clearsans_thin') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'clearsans_bold';
+    src: url('clearsans/ClearSans-Bold-webfont.eot');
+    src: url('clearsans/ClearSans-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('clearsans/ClearSans-Bold-webfont.woff') format('woff'),
+         url('clearsans/ClearSans-Bold-webfont.ttf') format('truetype'),
+         url('clearsans/ClearSans-Bold-webfont.svg#clearsans_thin') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'socicon';
+    src: url('socicon/socicon-webfont.eot');
+    src: url('socicon/socicon-webfont.eot?#iefix') format('embedded-opentype'),
+         url('socicon/socicon-webfont.woff') format('woff'),
+         url('socicon/socicon-webfont.ttf') format('truetype'),
+         url('socicon/socicon-webfont.svg#sociconregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }

@@ -3,7 +3,7 @@
 
 default: createdb
 	. ./env.sh
-	. var/bin/activate && app/manage.py collectstatic --noinput
+	# . var/bin/activate && app/manage.py collectstatic --noinput
 	. var/bin/activate && app/manage.py syncdb --noinput
 	. var/bin/activate && app/manage.py migrate
 	. var/bin/activate && app/manage.py loaddata oauth_fixtures.yaml
@@ -22,8 +22,10 @@ deploy-stage2:
 	su pawtrain -c 'make develop'
 
 createdb:
+	. enable_postgis.sh
 	createuser -d -l -s pawtrain -h 127.0.0.1 -U postgres || echo user already exists
-	createdb -O pawtrain -h 127.0.0.1 -U postgres pawtrain || echo db already exists
+	createdb -T template_postgis -O pawtrain -h 127.0.0.1 -U postgres pawtrain || echo db already exists
+
 
 .PHONY: test
 test:
@@ -46,3 +48,10 @@ prod:
 clean:
 	rm -Rf var
 
+.PHONY: resetmigration
+resetmigration:
+	rm -f app/web/migrations/0001_initial.py*
+	. var/bin/activate && ./app/manage.py schemamigration --initial web
+	. var/bin/activate && ./app/manage.py reset_db --noinput
+	. var/bin/activate && ./app/manage.py syncdb --migrate --noinput
+	. var/bin/activate && ./app/manage.py loaddata dev_fixtures.yaml

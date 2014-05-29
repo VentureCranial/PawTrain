@@ -10,7 +10,7 @@ cat << EOF | sed -e "s/FACEBOOK_ID/${FACEBOOK_ID}/;
     s/LINKEDIN_SECRET/${LINKEDIN_SECRET}/;
     s/TWITTER_ID/${TWITTER_ID}/;
     s/TWITTER_SECRET/${TWITTER_SECRET}/;
-    " >> app/web/fixtures/oauth_fixtures.yaml
+    " > app/web/fixtures/oauth_fixtures.yaml
 - fields:
     client_id: 'FACEBOOK_ID'
     key: ''

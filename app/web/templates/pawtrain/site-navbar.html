@@ -1,0 +1,106 @@
+{% load account %}
+{% load socialaccount %}
+
+{% if user.is_authenticated %}
+
+    <!-- BEGIN signout dialog -->
+    <div id="pawtrain-signout" role="dialog" aria-labelledby="pawtrain-signout-label" aria-hidden="true" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3 id="pawtrain-signin-label">Sign Out</h3>
+          </div>
+
+          <div class="modal-body">
+            Are you sure you want to sign out?
+          </div>
+
+          <form name="logout-form" method="POST" action="/accounts/logout/">
+            {% csrf_token %}
+          </form>
+          <div class="modal-footer">
+            <a href="#" data-dismiss="modal" aria-hidden="true" class="btn">Cancel</a>
+            <a href="#" onClick="$('#pawtrain-signout').data('signout', 'true');"
+                data-dismiss="modal" aria-hidden="true" class="btn btn-primary">Sign Out</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END signout dialog -->
+
+{% else %}
+
+    <!-- BEGIN signin dialog -->
+    <div id="pawtrain-signin" role="dialog" aria-labelledby="pawtrain-signin-label" aria-hidden="true" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3 id="pawtrain-signin-label">Sign In to the Paw Train</h3>
+          </div>
+
+          <div class="modal-body">
+            To sign into the Paw Train, choose your social provider:
+            <p>
+              <a href="{% provider_login_url "facebook" method="oauth2" %}" class="btn btn-facebook"><span class="socicon">b</span></a>
+              <a href="{% provider_login_url "twitter" %}" class="btn btn-twitter"><span class="socicon">a</span></a>
+              <a href="{% provider_login_url "linkedin_oauth2" %}" class="btn btn-likedin"><span class="socicon">j</span></a>
+              <a href="{% provider_login_url "google" %}" class="btn btn-google"><span class="socicon">c</span></a>
+            </p>
+
+          </div>
+
+          <div class="modal-footer">
+            <a href="#" class="btn" data-dismiss="modal" aria-hidden="true">Close</a>
+            <a href="#signin" class="btn btn-primary">Sign In</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END signin dialog -->
+{% endif %}
+
+
+    <!-- BEGIN navigation bar -->
+
+    <nav class="navbar navbar-default " role="navigation">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#pawtrain-navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Pawtrain</a>
+        </div>
+
+        <div id="pawtrain-navbar" class="collapse navbar-collapse">
+
+          <ul class="nav navbar-nav">
+            <li class="active"><a id="home_menu_link" href="/">Home</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url 'pawtrain_dashboard' %}">Dashboard</a></li>
+            {% endif %}
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            {% if user.is_authenticated %}
+
+            <li><a href="/accounts/profile/">{{ user.first_name }} {{ user.last_name }}</a></li>
+            <li><a href="#" data-target="#pawtrain-signout" data-toggle="modal">Sign Out</a></li>
+
+            {% else %}
+            <li><a href="#" data-target="#pawtrain-signin" data-toggle="modal">Sign In</a></li>
+            {% endif %}
+
+          </ul>
+
+
+        </div><!--#pawtrain-navbar -->
+      </div><!-- container-fluid -->
+    </nav>
+
+    <!-- END navigation bar -->

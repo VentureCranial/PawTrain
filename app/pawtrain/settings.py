@@ -1,6 +1,20 @@
-"""
-Django settings for pawtrain project.
 
+# -*- coding: utf-8 -*-
+#
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+#
+# PAWTRAIN
+#
+#     Pet underground railroad
+#
+#
+# Authors: Baron L. Chandler, baron@venturecranial.com
+# -----------------------------------------------------------------------
+# COPYRIGHT ©2014 Venture Cranial, LLC
+# =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+#
+
+"""
 For more information on this file, see
 https://docs.djangoproject.com/en/1.6/topics/settings/
 
@@ -30,12 +44,16 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+    'bootstrap3',
+    'django_admin_bootstrapped.bootstrap3',
+    'django_admin_bootstrapped',
+    'leaflet',
+
     'south',
 
-    'gunicorn',
+    # 'debug_toolbar',
 
-    'django_admin_bootstrapped', # must be before admin
-    'bootstrap3',
+    'gunicorn',
 
     'django.contrib.sites',
 
@@ -50,6 +68,7 @@ INSTALLED_APPS = (
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.twitter',
+    'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.linkedin_oauth2',
 
     'django.contrib.contenttypes',
@@ -60,6 +79,9 @@ INSTALLED_APPS = (
     'registration',
 
     'django_extensions',
+
+    'django.contrib.gis',
+    'djgeojson',
 
     'rest_framework',
     'rest_framework_swagger',
@@ -95,7 +117,7 @@ WSGI_APPLICATION = 'pawtrain.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'pawtrain',
         'USER': 'pawtrain',
         'HOST' : '127.0.0.1',
@@ -162,14 +184,18 @@ AUTHENTICATION_BACKENDS = (
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, '..', 'static'),
+    os.path.join(BASE_DIR, '..', 'var/www/static'),
 )
-STATIC_ROOT = os.path.join(BASE_DIR, '..', 'var/www/static/')
+STATIC_ROOT = os.path.join('/tmp/crap')
 
 # Uploaded files
 #
-MEDIA_ROOT =  os.path.join(STATIC_ROOT, "uploads/")
-MEDIA_URL = '/uploads/'
+MEDIA_ROOT = os.path.join(BASE_DIR, '..', 'var/www/static/uploads/')
+MEDIA_URL = STATIC_URL + 'uploads/'
 
+SERIALIZATION_MODULES = {
+    'geojson' : 'djgeojson.serializers'
+}
 
 
 REST_FRAMEWORK = {
@@ -191,6 +217,8 @@ SWAGGER_SETTINGS = {
     ],
     "is_authenticated": False
 }
+
+GEOS_LIBRARY_PATH = '/usr/local/Cellar/geos/3.4.2/lib/libgeos_c.dylib'
 
 LOG_DIR = os.path.join(BASE_DIR, '..', 'var/log/pawtrain')
 

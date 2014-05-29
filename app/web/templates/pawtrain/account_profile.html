@@ -1,0 +1,33 @@
+{% extends "pawtrain/base.html" %}
+
+{% load account %}
+
+{% block content %}
+
+    {% if user %}
+
+          <div class="col-xs-12 col-md-8 col-md-offset-2">
+
+              {% for account in user.socialaccount_set.all %}
+
+                  <div class="col-xs-12 col-md-8 col-md-offset-2">
+                    <h2 style="text-transform:capitalize;">{{ account.provider }}</h2></h2>
+                    <p><img width="50" height="50" src="{{ account.get_avatar_url }}" /></p>
+                    <p>UID: <a href="{{account.extra_data.link }}">{{ account.uid }}</a></p>
+                    <p>Username: {{ account.extra_data.username }}</p>
+                    <p>First Name: {{ account.extra_data.first_name }}</p>
+                    <p>Last Name: {{ account.extra_data.last_name }}</p>
+                    <p>Profile Link: <a href="{{ account.extra_data.link }}">{{ account.extra_data.link }}</a></p>
+                  </div>
+              {% endfor %}
+          </div>
+
+    {% else %}
+
+          <div class="col-xs-12 col-md-8 col-md-offset-2">
+              <h1>Please log in first!</h1>
+          </div>
+
+    {% endif %}
+
+{% endblock content %}

@@ -34,3 +34,5 @@ django-allauth
 
 django-leaflet
 django-geojson
+
+Pillow

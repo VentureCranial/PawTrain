@@ -1,9 +1,29 @@
 {% extends "pawtrain/base.html" %}
 
+{% load static %}
 {% load account %}
 
 {% block content %}
-    Hello
-            User: {% user_display user %}
 
+    <div class="col-xs-10 col-xs-offset-1 col-md-10 col-md-offset-1">
+        <p>Shipments coming through or near ATHENS, GA that need your help:</p>
+
+        <ul id="nearby-pet-list" class="thumbnails">
+            {% for pet in transport_list %}
+
+            <li class="col-xs-12 col-md-4">
+                <a href="{% url 'transport_detail' pet.tracking_number %}" class="pet-detail-link">
+                <div class="pet-thumbnail">
+                    <div class="pet-image-box">
+                        <img class="pet-image" src="{% static 'uploads/' %}{{pet.manifest__images__image}}" alt="Photo of {{pet.manifest__name}}">
+                        <span class="pet-name">{{pet.manifest__name}}</span>
+                    </div>
+
+                    View details &raquo;</a>
+                </div>
+            </li>
+            {% endfor %}
+
+        </ul>
+    </div>
 {% endblock content %}
