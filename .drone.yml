@@ -2,6 +2,9 @@ image: bradrydzewski/python:2.7
 cache:
   - /var/tmp/pip-cache/
 
+services:
+  - postgres
+
 env:
   - FACEBOOK_ID={{FACEBOOK_ID}}
   - FACEBOOK_SECRET={{FACEBOOK_SECRET}}
@@ -15,9 +18,6 @@ script:
   - sudo chown -R ubuntu:ubuntu /var/tmp/pip-cache/
   - chmod +x mk_oauth_fixtures.sh
   - ./mk_oauth_fixtures.sh
-
-services:
-  - postgres
 
 notify:
   email:
