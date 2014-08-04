@@ -3,7 +3,7 @@ cache:
   - /var/tmp/pip-cache/
 
 services:
-  - postgres
+  - postgres:9.1
 
 env:
   - FACEBOOK_ID={{FACEBOOK_ID}}
