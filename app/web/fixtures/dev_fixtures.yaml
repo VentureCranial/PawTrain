@@ -1,0 +1,139 @@
+- fields:
+    created_by: 1
+    created_on: 2014-05-28 21:02:45.536575+00:00
+    last_updated: 2014-05-28 20:29:26.153105+00:00
+    last_updated_by: 1
+    location: 1
+    name: Ella
+    pet_type: canine
+    rescued_by: 1
+    story: ella's story
+    thumbnail: null
+    transport: 1
+  model: web.pet
+  pk: 1
+- fields:
+    created_by: 1
+    created_on: 2014-05-28 17:04:41.753180+00:00
+    last_updated: 2014-05-28 17:04:41.753136+00:00
+    last_updated_by: 1
+    location: 3
+    name: Sofia
+    pet_type: canine
+    rescued_by: 1
+    story: Story
+    thumbnail: null
+    transport: 1
+  model: web.pet
+  pk: 2
+- fields:
+    created_by: 1
+    created_on: ! 2014-05-28 20:55:41.776561+00:00
+    finish_location: 3
+    finished_on: null
+    last_updated: ! 2014-05-28 20:24:28.299461+00:00
+    last_updated_by: 1
+    notes:
+    receiver: 1
+    shipper: 1
+    start_location: 1
+    started_on: null
+    status: NEW
+    tracking_number: PT014V5AIBL4YCZ
+  model: web.transport
+  pk: 1
+- fields:
+    distance: 120.0
+    last_updated: 2014-05-28 05:36:44.373631+00:00
+    last_updated_by: 1
+    location: POINT (-83.3991479873657227 33.9046872450014476)
+    story: null
+    user: [admin]
+  model: web.userprofile
+  pk: 1
+- fields:
+    created_on: 2014-05-28 17:56:42.254079+00:00
+    description: NBRAN
+    last_updated: 2014-05-28 17:56:42.254123+00:00
+    last_updated_by: 1
+    logo: null
+    name: National Brittany Rescue and Adoption Network
+  model: web.organization
+  pk: 1
+- fields:
+    address:
+    description:
+    geo: POINT (-83.3891225 33.9442744)
+    name: Athens, GA
+  model: web.location
+  pk: 1
+- fields:
+    address:
+    description:
+    geo: POINT (-84.420604 33.7677129)
+    name: Atlanta, GA
+  model: web.location
+  pk: 2
+- fields:
+    address:
+    description:
+    geo: POINT (-85.6767705 38.188805)
+    name: Louisville, KY
+  model: web.location
+  pk: 3
+- fields:
+    drop_off_datetime: ! 2014-05-30 23:30:00+00:00
+    drop_off_location: 2
+    duration: 01:30:00
+    last_updated: ! 2014-05-28 20:21:55.749924+00:00
+    last_updated_by: 1
+    miles: 66
+    notes:
+    offset: 00:00:00
+    pick_up_datetime: ! 2014-05-30 22:00:00+00:00
+    pick_up_location: 1
+    sequence: 1
+    status: ONTM
+    transport: 1
+  model: web.transportsegment
+  pk: 1
+- fields:
+    drop_off_datetime: ! 2014-05-31 03:30:00+00:00
+    drop_off_location: 3
+    duration: 02:30:00
+    last_updated: ! 2014-05-28 20:24:19.886367+00:00
+    last_updated_by: 1
+    miles: 180
+    notes:
+    offset: null
+    pick_up_datetime: ! 2014-05-31 01:10:00+00:00
+    pick_up_location: 2
+    sequence: 3
+    status: ONTM
+    transport: 1
+  model: web.transportsegment
+  pk: 3
+- fields:
+    content_type: [web, pet]
+    height: 720
+    image: images/large_2.jpg
+    object_id: 2
+    posted: ! 2014-05-29 01:22:30.264428+00:00
+    posted_by: 1
+    size: 0
+    source_url: null
+    width: 960
+  model: web.image
+  pk: 1
+- fields:
+    content_type: [web, pet]
+    height: 720
+    image: images/large_3.jpg
+    object_id: 1
+    posted: ! 2014-05-29 01:22:41.292187+00:00
+    posted_by: 1
+    size: 0
+    source_url: null
+    width: 960
+  model: web.image
+  pk: 2
