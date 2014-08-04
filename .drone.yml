@@ -1,10 +1,8 @@
 image: bradrydzewski/python:2.7
 cache:
   - /var/tmp/pip-cache/
-
 services:
-  - postgres:9.1
-
+  - bradrydzewski/postgres:9.1
 env:
   - FACEBOOK_ID={{FACEBOOK_ID}}
   - FACEBOOK_SECRET={{FACEBOOK_SECRET}}
@@ -12,22 +10,18 @@ env:
   - LINKEDIN_SECRET={{LINKEDIN_SECRET}}
   - TWITTER_ID={{TWITTER_ID}}
   - TWITTER_SECRET={{TWITTER_SECRET}}
-
 script:
   - mkdir -p /var/tmp/pip-cache/
   - sudo chown -R ubuntu:ubuntu /var/tmp/pip-cache/
   - chmod +x mk_oauth_fixtures.sh
   - ./mk_oauth_fixtures.sh
-
 notify:
   email:
     recipients:
       - baron@baronchandler.com
-
 script:
   - make
   - make test
-
 deploy:
   ssh:
     target: pawtrain@docker-01:/home/pawtrain/pawtrain.tar.gz
