@@ -15,7 +15,6 @@ script:
   - sudo chown -R ubuntu:ubuntu /var/tmp/pip-cache/
   - chmod +x mk_oauth_fixtures.sh
   - ./mk_oauth_fixtures.sh
-  - psql -h localhost -c 'create database test;' -U postgres
 notify:
   email:
     recipients:

@@ -1,4 +1,4 @@
-POSTGIS_SQL_PATH=lib/postgis-2.1
+POSTGIS_SQL_PATH=./lib/postgis-2.1
 
 # Creating the template spatial database.
 createdb -h localhost -U postgres template_postgis
