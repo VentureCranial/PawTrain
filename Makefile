@@ -22,7 +22,8 @@ deploy-stage2:
 	su pawtrain -c 'make develop'
 
 createdb:
-	. enable_postgis.sh
+	cat ./enable_postgis.sh
+	. ./enable_postgis.sh
 	createuser -d -l -s pawtrain -h 127.0.0.1 -U postgres || echo user already exists
 	createdb -T template_postgis -O pawtrain -h 127.0.0.1 -U postgres pawtrain || echo db already exists
 
