@@ -1,5 +1,4 @@
-POSTGIS_SQL_PATH=`pg_config --sharedir`/contrib/postgis-2.1
-POSTGIS_SQL_PATH=/usr/share/postgresql/9.3/contrib/postgis-2.1
+POSTGIS_SQL_PATH=lib/postgis-2.1
 
 # Creating the template spatial database.
 createdb -h localhost -U postgres template_postgis
