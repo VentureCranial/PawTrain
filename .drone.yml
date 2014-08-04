@@ -2,7 +2,7 @@ image: bradrydzewski/python:2.7
 cache:
   - /var/tmp/pip-cache/
 services:
-  - bradrydzewski/postgres:9.1
+  - postgres
 env:
   - FACEBOOK_ID={{FACEBOOK_ID}}
   - FACEBOOK_SECRET={{FACEBOOK_SECRET}}
