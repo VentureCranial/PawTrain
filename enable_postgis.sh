@@ -1,7 +1,7 @@
 POSTGIS_SQL_PATH=`pg_config --sharedir`/contrib/postgis-2.1
 
 # Creating the template spatial database.
-createdb -h localhost -U postgres -E UTF8 template_postgis
+createdb -h localhost -U postgres -E UTF8 -l en_US.utf8 template_postgis
 createlang -h localhost -U postgres -d template_postgis plpgsql # Adding PLPGSQL language support.
 
 # Allows non-superusers the ability to create from this template
